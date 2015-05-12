@@ -1,0 +1,41 @@
+pki_dir:  /etc/salt/pki/master
+cachedir: /var/cache/salt/master
+keep_jobs: 24
+timeout: 60
+auto_accept: True
+autosign_file: /etc/salt/autosign.conf
+runner_dirs:
+  - /srv/salt/dev/runners
+worker_threads: 5
+gather_job_timeout: 2
+
+file_roots:
+  base:
+    - /srv/salt
+  prod:
+    - /srv/salt
+  qa:
+    - /srv/salt
+  dev:
+    - /srv/salt
+
+pillar_roots:
+  base:
+    - /srv/pillarroot
+  dev:
+    - /srv/pillarroot
+  qa:
+    - /srv/pillarroot
+  prod:
+    - /srv/pillarroot
+
+log_level: warning
+log_level_logfile: warning
+
+peer:
+  .*dev.*:
+    - pkg\.(version)
+    - service\.(status|start|stop|restart)
+    - file\.(find|remove)
+    - laser\.(deploy|get_service_pid|get_pmap_from_pid|get_service_pmap)
+

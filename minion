@@ -1,0 +1,13 @@
+id: saltmaster1
+
+master:
+  - saltmaster1
+
+pki_dir: /etc/salt/pki/minion
+cachedir: /var/cache/salt/minion
+sock_dir: /var/run/salt/minion
+log_file: /var/log/salt/minion
+key_logfile: /var/log/salt/key
+log_level: debug
+log_level_logfile: debug
+
